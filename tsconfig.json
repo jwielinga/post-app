@@ -19,7 +19,7 @@
       }
     ],
     "paths": {
-      "@todo-app/*": ["./src/*"]
+      "@Post-app/*": ["./src/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
