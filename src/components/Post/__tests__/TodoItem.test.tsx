@@ -12,14 +12,14 @@ describe("Post", () => {
   it("should call the onUp callback when the up button is clicked", () => {
     const onUp = jest.fn();
     render(<Post title="Test" onUp={onUp} />);
-    fireEvent.click(screen.getByText("Up"));
+    fireEvent.click(screen.getByLabelText("Move up"));
     expect(onUp).toHaveBeenCalled();
   });
 
   it("should call the onDown callback when the down button is clicked", () => {
     const onDown = jest.fn();
     render(<Post title="Test" onDown={onDown} />);
-    fireEvent.click(screen.getByText("Down"));
+    fireEvent.click(screen.getByLabelText("Move down"));
     expect(onDown).toHaveBeenCalled();
   });
 });
