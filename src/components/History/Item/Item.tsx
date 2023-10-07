@@ -6,7 +6,8 @@ export function HistoryItem({
 }: HistoryItemProps) {
   return (
     <li className="inline-flex">
-      Moved post {postId} from index {oldPosition} to index {newPosition}
+      Moved post {postId} from index {oldPosition + 1} to index{" "}
+      {newPosition + 1}
     </li>
   );
 }

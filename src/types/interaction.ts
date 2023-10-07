@@ -6,6 +6,7 @@ export enum InteractionKindEnum {
 }
 
 export type Interaction = {
+  id: string;
   postId: Post["id"];
   kind: InteractionKindEnum;
   oldPosition: number;

@@ -8,7 +8,7 @@ export function HistoryList() {
   return (
     <div>
       {interactions.map((interaction) => (
-        <HistoryItem key={interaction.postId} interaction={interaction} />
+        <HistoryItem key={interaction.id} interaction={interaction} />
       ))}
     </div>
   );
