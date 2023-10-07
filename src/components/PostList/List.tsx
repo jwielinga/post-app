@@ -1,17 +1,18 @@
 "use client";
-import { getPosts } from "@Post-app/queries";
 import React from "react";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { Post } from "@Post-app/types";
 import { PostItem } from "../Post";
+import { ListProps } from "./types";
 
-export default function List() {
-  const { data } = useQuery<Post[]>({ queryKey: ["Posts"], queryFn: getPosts });
-
+export default function List({ posts }: ListProps) {
   return (
-    <ul className="overflow-y-scroll h-96">
-      {data?.map(({ id, title }) => (
-        <PostItem key={id} title={title} />
+    <ul className="overflow-y-scroll h-max">
+      {posts?.map(({ id, title }, index) => (
+        <PostItem
+          key={id}
+          title={title}
+          {...(index !== 0 ? { onUp: (): void => {} } : {})}
+          {...(index !== posts.length ? { onDown: (): void => {} } : {})}
+        />
       ))}
     </ul>
   );
