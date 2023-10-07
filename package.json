@@ -21,7 +21,8 @@
     "next": "13.5.4",
     "react": "^18",
     "react-dom": "^18",
-    "tailwind-merge": "^1.14.0"
+    "tailwind-merge": "^1.14.0",
+    "zustand": "^4.4.3"
   },
   "devDependencies": {
     "@tanstack/eslint-plugin-query": "^4.36.0",

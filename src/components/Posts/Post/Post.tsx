@@ -1,9 +1,9 @@
 import React from "react";
-import ArrowUpIcon from "@heroicons/react/24/solid/ArrowUpIcon";
-import ArrowDownIcon from "@heroicons/react/24/solid/ArrowDownIcon";
+import ChevronUpIcon from "@heroicons/react/24/solid/ChevronUpIcon";
+import ChevronDownIcon from "@heroicons/react/24/solid/ChevronDownIcon";
 
 import { PostItemProps } from "./types";
-import IconButton from "../IconButton/IconButton";
+import IconButton from "../../IconButton/IconButton";
 
 export default function PostItem({ title, onDown, onUp }: PostItemProps) {
   return (
@@ -12,14 +12,14 @@ export default function PostItem({ title, onDown, onUp }: PostItemProps) {
       <div className="flex flex-col">
         {onUp && (
           <IconButton
-            icon={<ArrowUpIcon />}
+            icon={<ChevronUpIcon />}
             onClick={onUp}
             aria-label="Move up"
           />
         )}
         {onDown && (
           <IconButton
-            icon={<ArrowDownIcon />}
+            icon={<ChevronDownIcon />}
             onClick={onDown}
             aria-label="Move down"
           />

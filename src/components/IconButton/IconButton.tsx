@@ -14,7 +14,7 @@ export default function IconButton({
 
   return (
     <button className={classes} {...restProps}>
-      {React.cloneElement(icon, { className: "h-4 w-4 text-black" })}
+      {React.cloneElement(icon, { className: "h-4 w-4 text-primary" })}
     </button>
   );
 }
