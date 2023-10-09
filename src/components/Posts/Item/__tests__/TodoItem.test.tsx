@@ -1,7 +1,7 @@
 import "@testing-library/jest-dom";
 import { fireEvent, render, screen } from "@testing-library/react";
 
-import Post from "../Post";
+import Post from "../Item";
 
 const TEXT = "Test";
 
@@ -26,13 +26,15 @@ describe("Post", () => {
   });
 
   it("should only show up icon button once onUp prop is providerd", () => {
-    render(<Post title={TEXT} onUp={() => {}} />);
+    const onUp = jest.fn();
+    render(<Post title={TEXT} onUp={onUp} />);
     expect(screen.getByLabelText("Move up")).toBeInTheDocument();
     expect(screen.queryByLabelText("Move down")).not.toBeInTheDocument();
   });
 
   it("should only show down icon button once onDown prop is providerd", () => {
-    render(<Post title={TEXT} onDown={() => {}} />);
+    const onDown = jest.fn();
+    render(<Post title={TEXT} onDown={onDown} />);
     expect(screen.getByLabelText("Move down")).toBeInTheDocument();
     expect(screen.queryByLabelText("Move up")).not.toBeInTheDocument();
   });

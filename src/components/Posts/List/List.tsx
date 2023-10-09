@@ -1,20 +1,19 @@
 "use client";
+
 import React from "react";
-import { PostItem } from "../Post";
-import { InteractionKindEnum, Post } from "@Post-app/types";
+import { Post } from "@Post-app/types";
 import { useAppStore } from "@Post-app/lib";
 import { getPosts } from "@Post-app/queries";
 import { useQuery } from "@tanstack/react-query";
 
-const getCurrentPosition = (posts: Post[], id: Post["id"]) =>
-  posts.findIndex((post) => post.id === id);
+import { Item } from "../Item";
 
 export function List() {
   const { addPostInteraction, posts, setPosts, movePost } = useAppStore();
 
   const onQuerySuccess = (data: Post[]) => {
-    const posts = data?.slice(0, 5) ?? [];
-    setPosts(posts);
+    const slicedPosts = data?.slice(0, 5) ?? [];
+    setPosts(slicedPosts);
   };
 
   useQuery<Post[]>({
@@ -24,33 +23,37 @@ export function List() {
   });
 
   const handleUp = (post: Post, index: number) => {
-    console.log("handleUp", post, index);
     const newPosition = index - 1;
     addPostInteraction({
-      postId: post.id,
-      kind: InteractionKindEnum.UP,
+      post: {
+        id: post.id,
+        title: post.title,
+      },
       oldPosition: index,
       newPosition,
+      postsSnapShot: posts,
     });
     movePost(post, newPosition);
   };
 
   const handleDown = (post: Post, index: number) => {
-    console.log("handleDown", post, index);
     const newPosition = index + 1;
     addPostInteraction({
-      postId: post.id,
-      kind: InteractionKindEnum.DOWN,
+      post: {
+        id: post.id,
+        title: post.title,
+      },
       oldPosition: index,
       newPosition,
+      postsSnapShot: posts,
     });
     movePost(post, newPosition);
   };
 
   return (
-    <ul className="overflow-y-scroll h-max">
+    <ul className="overflow-y-scroll h-max pb-2">
       {posts?.map((post, index) => (
-        <PostItem
+        <Item
           key={post.id}
           title={post.title}
           {...(index !== 0 ? { onUp: () => handleUp(post, index) } : {})}

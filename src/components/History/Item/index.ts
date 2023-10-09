@@ -1,3 +1,3 @@
-import { HistoryItem } from "./Item";
+import { Item } from "./Item";
 
-export { HistoryItem };
+export { Item };

@@ -1,14 +1,14 @@
 import React from "react";
 import { useAppStore } from "../../../lib/store";
-import { HistoryItem } from "../Item";
+import { Item } from "../Item";
 
 export function List() {
   const { interactions } = useAppStore();
 
   return (
-    <ul className="p-4 rounded-md gap-1 h-min">
+    <ul className="p-4 rounded-md gap-1 overflow-y-scroll flex flex-col">
       {interactions.map((interaction) => (
-        <HistoryItem key={interaction.id} interaction={interaction} />
+        <Item key={interaction.id} interaction={interaction} />
       ))}
     </ul>
   );

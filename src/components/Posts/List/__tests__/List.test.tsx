@@ -1,18 +1,30 @@
 import "@testing-library/jest-dom";
-import { render, screen, waitFor } from "@testing-library/react";
-import { POSTS } from "@Post-app/mocks/posts";
+import { render, screen } from "@testing-library/react";
+import { useStore } from "zustand";
 
-import List from "../List";
+import { POSTS } from "@Post-app/mocks/posts";
+import { postsSlice } from "@Post-app/lib/slices/posts";
+
+import { List } from "../List";
+
+// jest.mock("@Post-app/lib", () => ({
+//   useAppStore: () => ({
+//     posts: POSTS,
+//     setPosts: jest.fn(),
+//   }),
+// }));
 
 beforeEach(async () => {
-  render(<List posts={POSTS.slice(0, 5)} />);
+  const initialStoreState = useStore.getState * postsSlice.set;
+  render(<List />);
 });
 
 describe("List", () => {
   it("should render the list of posts", async () => {
-    const firstPost = await screen.getByText(new RegExp(POSTS[0].title));
+    const firstPost = screen.getByText(new RegExp(POSTS[0].title));
+    screen.debug();
 
-    await expect(firstPost).toBeVisible();
+    expect(firstPost).toBeVisible();
   });
 
   it("should render only 5 posts", () => {

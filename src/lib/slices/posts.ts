@@ -1,6 +1,4 @@
-import { getPosts } from "@Post-app/queries";
 import type { Post } from "@Post-app/types";
-import { useQuery } from "@tanstack/react-query";
 import { StateCreator } from "zustand";
 
 export type PostsSlice = {
