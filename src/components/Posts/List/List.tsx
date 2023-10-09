@@ -57,7 +57,7 @@ export function List() {
           key={post.id}
           title={post.title}
           {...(index !== 0 ? { onUp: () => handleUp(post, index) } : {})}
-          {...(index !== posts.length
+          {...(index !== posts.length - 1
             ? { onDown: () => handleDown(post, index) }
             : {})}
         />

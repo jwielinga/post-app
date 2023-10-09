@@ -11,6 +11,7 @@ export function Item({
 
   const handleButtonClick = () => {
     const posts = timeTravel(id);
+    console.log({ posts });
     setPosts(posts);
   };
 

@@ -16,5 +16,5 @@ export const postsSlice: StateCreator<PostsSlice> = (set) => ({
       posts.splice(newIndex, 0, post);
       return { posts };
     }),
-  setPosts: (posts) => set({ posts }),
+  setPosts: (posts) => set(() => ({ posts })),
 });

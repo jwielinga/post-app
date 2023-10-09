@@ -21,12 +21,20 @@ export const historySlice: StateCreator<HistorySlice> = (set, get) => ({
       interactions,
     })),
   timeTravel: (id) => {
-    const foundIndex =
-      get()?.interactions.findIndex((item) => item.id === id) ?? {};
+    const interactions = get()?.interactions ?? [];
+    const foundIndex = interactions.findIndex((item) => item.id === id) ?? {};
+    const slicedInteractions = interactions.slice(foundIndex);
 
-    const slicedInteractions = get()?.interactions.slice(foundIndex);
+    const { postsSnapShot = [] } = interactions[foundIndex + 1] ?? [];
     set(() => ({ interactions: slicedInteractions }));
-    const { postsSnapShot = [] } = slicedInteractions[0];
+
+    console.log({
+      interactions: get()?.interactions,
+      slicedInteractions,
+      foundIndex,
+      postsSnapShot,
+    });
+
     return postsSnapShot;
   },
 });

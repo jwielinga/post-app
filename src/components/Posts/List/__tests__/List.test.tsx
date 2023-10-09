@@ -1,28 +1,31 @@
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
-import { useStore } from "zustand";
 
 import { POSTS } from "@Post-app/mocks/posts";
-import { postsSlice } from "@Post-app/lib/slices/posts";
+import { QueryWrapper } from "@Post-app/test";
 
 import { List } from "../List";
 
-// jest.mock("@Post-app/lib", () => ({
-//   useAppStore: () => ({
-//     posts: POSTS,
-//     setPosts: jest.fn(),
-//   }),
-// }));
+jest.mock("@Post-app/lib", () => ({
+  useAppStore: () => ({
+    posts: POSTS,
+    setPosts: jest.fn(),
+  }),
+}));
 
 beforeEach(async () => {
-  const initialStoreState = useStore.getState * postsSlice.set;
-  render(<List />);
+  render(
+    <QueryWrapper>
+      <List />
+    </QueryWrapper>
+  );
 });
+
+const regExpTitle = new RegExp(POSTS[0].title, "i");
 
 describe("List", () => {
   it("should render the list of posts", async () => {
-    const firstPost = screen.getByText(new RegExp(POSTS[0].title));
-    screen.debug();
+    const firstPost = screen.getByText(regExpTitle);
 
     expect(firstPost).toBeVisible();
   });
