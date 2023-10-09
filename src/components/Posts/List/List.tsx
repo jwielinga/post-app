@@ -9,7 +9,7 @@ import { useQuery } from "@tanstack/react-query";
 const getCurrentPosition = (posts: Post[], id: Post["id"]) =>
   posts.findIndex((post) => post.id === id);
 
-export default function List() {
+export function List() {
   const { addPostInteraction, posts, setPosts, movePost } = useAppStore();
 
   const onQuerySuccess = (data: Post[]) => {

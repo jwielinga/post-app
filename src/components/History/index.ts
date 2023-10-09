@@ -1,3 +1,1 @@
-import { HistoryList } from "./List/List";
-
-export { HistoryList };
+export { Main as HistoryOverview } from "./Main";

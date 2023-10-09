@@ -2,14 +2,14 @@ import React from "react";
 import { useAppStore } from "../../../lib/store";
 import { HistoryItem } from "../Item";
 
-export function HistoryList() {
+export function List() {
   const { interactions } = useAppStore();
 
   return (
-    <div>
+    <ul className="p-4 rounded-md gap-1 h-min">
       {interactions.map((interaction) => (
         <HistoryItem key={interaction.id} interaction={interaction} />
       ))}
-    </div>
+    </ul>
   );
 }
