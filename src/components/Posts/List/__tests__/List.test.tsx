@@ -1,16 +1,22 @@
-import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 
-import { POSTS } from "@Post-app/mocks/posts";
+import { INTERACTIONS, POSTS } from "@Post-app/mocks";
 import { QueryWrapper } from "@Post-app/test";
 import type { Post } from "@Post-app/types";
 
 import { List } from "../List";
 
 jest.mock("@Post-app/lib", () => ({
-  useAppStore: () => ({
+  useHistoryStore: () => ({
+    interactions: INTERACTIONS,
+    addPostInteraction: jest.fn(),
+  }),
+  usePostStore: () => ({
     posts: POSTS,
-    setPosts: jest.fn(),
+    movePost: jest.fn(),
+  }),
+  useSnapShotStore: () => ({
+    addSnapshots: jest.fn(),
   }),
 }));
 
@@ -30,6 +36,7 @@ describe("List", () => {
     const lastPost = screen.getByText(
       getRegExpTitle(POSTS[POSTS.length - 1].id)
     );
+    screen.debug();
 
     expect(firstPost).toBeVisible();
     expect(lastPost).toBeVisible();

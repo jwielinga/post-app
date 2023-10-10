@@ -1,4 +1,3 @@
-import "@testing-library/jest-dom";
 import { fireEvent, render, screen } from "@testing-library/react";
 import CheckCircleIcon from "@heroicons/react/24/solid/CheckCircleIcon";
 
