@@ -17,13 +17,11 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const bodyClasses = twMerge(
-    inter.className,
-    "bg-gradient-to-br from-primary from-50% to-neutral to-50% bg-size-20"
-  );
+  const bodyClasses = twMerge(inter.className, "bg-neutral w-full h-full");
   return (
     <html lang="en">
       <body className={bodyClasses}>
+        <div className="fixed -z-10 bg-gradient-to-br from-primary from-50% to-neutral to-50% h-64 w-full" />
         <Providers>{children}</Providers>
       </body>
     </html>
