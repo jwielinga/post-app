@@ -16,11 +16,11 @@ export function Item({ interaction }: HistoryItemProps) {
   };
 
   return (
-    <li className="inline-flex bg-white w-full p-2 rounded-sm text-sm">
-      {generateText(interaction)}
+    <li className="inline-flex items-center bg-white w-full p-2 rounded-sm text-sm gap-2">
+      <p>{generateText(interaction)}</p>
       <button
         aria-label="Time travel"
-        className="bg-secondary bold py-2 px-4 rounded-sm self-center cursor-pointer whitespace-nowrap text-center font-bold text-xs"
+        className="bg-secondary bold py-2 px-4 rounded-sm self-center cursor-pointer whitespace-nowrap text-center font-extrabold text-xs"
         onClick={handleButtonClick}
         type="button"
       >

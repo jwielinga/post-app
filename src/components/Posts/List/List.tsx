@@ -47,7 +47,7 @@ export function List() {
   };
 
   return (
-    <ul className="overflow-y-scroll h-max pb-2">
+    <ul className="h-max pb-2 flex flex-col gap-2 ">
       {posts.map((post, index) => (
         <Item
           key={post.id}
