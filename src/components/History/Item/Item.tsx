@@ -10,7 +10,6 @@ export function Item({ interaction }: HistoryItemProps) {
 
   const handleButtonClick = () => {
     const posts = timeTravel(interaction.id);
-    console.log({ posts });
     setPosts(posts);
   };
 

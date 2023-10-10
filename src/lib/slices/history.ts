@@ -28,13 +28,6 @@ export const historySlice: StateCreator<HistorySlice> = (set, get) => ({
     const { postsSnapShot = [] } = interactions[foundIndex + 1] ?? [];
     set(() => ({ interactions: slicedInteractions }));
 
-    console.log({
-      interactions: get()?.interactions,
-      slicedInteractions,
-      foundIndex,
-      postsSnapShot,
-    });
-
     return postsSnapShot;
   },
 });

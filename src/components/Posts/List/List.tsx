@@ -14,7 +14,6 @@ export function List() {
 
   const handleUp = (post: Post, index: number) => {
     const newPosition = index - 1;
-    console.log({ posts });
     addPostInteraction({
       post: {
         id: post.id,
