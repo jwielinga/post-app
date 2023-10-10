@@ -12,10 +12,6 @@ module.exports = {
       backgroundImage: {
         "gradient-10": "linear-gradient(25deg, var(--tw-gradient-stops))",
       },
-      backgroundSize: {
-        "100%": "100%",
-        20: "20rem",
-      },
     },
     plugins: [],
   },
