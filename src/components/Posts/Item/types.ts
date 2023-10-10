@@ -1,5 +1,5 @@
 export type PostItemProps = {
   id: number;
-  onUp?: () => void;
-  onDown?: () => void;
+  onUp?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onDown?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };

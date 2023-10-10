@@ -19,7 +19,7 @@ export default function RootLayout({
 }) {
   const bodyClasses = twMerge(
     inter.className,
-    "bg-gradient-to-br from-primary from-[20rem] to-neutral to-[20rem]"
+    "bg-gradient-to-br from-primary from-50% to-neutral to-50% bg-size-20"
   );
   return (
     <html lang="en">

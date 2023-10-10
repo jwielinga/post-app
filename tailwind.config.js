@@ -10,8 +10,11 @@ module.exports = {
         neutral: "rgba(246, 246, 246, 255)",
       },
       backgroundImage: {
-        "gradient-10":
-          "linear-gradient(to bottom right, var(--tw-gradient-stops))",
+        "gradient-10": "linear-gradient(25deg, var(--tw-gradient-stops))",
+      },
+      backgroundSize: {
+        "100%": "100%",
+        20: "20rem",
       },
     },
     plugins: [],
