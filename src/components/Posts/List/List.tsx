@@ -3,27 +3,18 @@
 import React from "react";
 import { Post } from "@Post-app/types";
 import { useAppStore } from "@Post-app/lib";
-import { getPosts } from "@Post-app/queries";
-import { useQuery } from "@tanstack/react-query";
+
+import { usePostsQuery } from "@Post-app/hooks";
 
 import { Item } from "../Item";
 
 export function List() {
-  const { addPostInteraction, posts, setPosts, movePost } = useAppStore();
-
-  const onQuerySuccess = (data: Post[]) => {
-    const slicedPosts = data?.slice(0, 5) ?? [];
-    setPosts(slicedPosts);
-  };
-
-  useQuery<Post[]>({
-    queryKey: ["Posts"],
-    queryFn: getPosts,
-    onSuccess: onQuerySuccess,
-  });
+  const { addPostInteraction, posts, movePost } = useAppStore();
+  usePostsQuery();
 
   const handleUp = (post: Post, index: number) => {
     const newPosition = index - 1;
+    console.log({ posts });
     addPostInteraction({
       post: {
         id: post.id,

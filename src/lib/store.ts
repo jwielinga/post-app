@@ -5,6 +5,6 @@ import { postsSlice, PostsSlice } from "./slices/posts";
 type Slices = HistorySlice & PostsSlice;
 
 export const useAppStore = create<Slices>()((...a) => ({
-  ...historySlice(...a),
   ...postsSlice(...a),
+  ...historySlice(...a),
 }));

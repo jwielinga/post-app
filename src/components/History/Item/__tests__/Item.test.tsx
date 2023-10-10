@@ -1,23 +1,27 @@
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
-import { Interaction } from "@Post-app/types";
+
+import { INTERACTIONS } from "@Post-app/mocks";
 
 import { Item } from "../Item";
+import { generateText } from "../../utils";
 
-const INTERACTION: Interaction = {
-  id: "029c99c7-b05d-497f-9805-c2cdec6cadf4",
-  post: {
-    id: 1,
-    title: "Test Post",
-  },
-  oldPosition: 0,
-  newPosition: 1,
-  postsSnapShot: [],
-};
+const TEST_INTERACTION = INTERACTIONS[0];
+
+const text = generateText(TEST_INTERACTION);
 
 describe("History Item", () => {
   it("should render the item title and description", () => {
-    render(<Item interaction={INTERACTION} />);
-    expect(screen.getByText(INTERACTION.post.title)).toBeVisible();
+    render(<Item interaction={TEST_INTERACTION} />);
+
+    const listItem = screen.getByText(text);
+    expect(listItem).toBeVisible();
+  });
+
+  it("should render the item with a button", () => {
+    render(<Item interaction={TEST_INTERACTION} />);
+
+    const button = screen.getByRole("button");
+    expect(button).toBeVisible();
   });
 });

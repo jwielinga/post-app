@@ -3,22 +3,20 @@ import React from "react";
 import { useAppStore } from "@Post-app/lib";
 
 import type { HistoryItemProps } from "./types";
+import { generateText } from "../utils";
 
-export function Item({
-  interaction: { id, post, oldPosition, newPosition },
-}: HistoryItemProps) {
+export function Item({ interaction }: HistoryItemProps) {
   const { timeTravel, setPosts } = useAppStore();
 
   const handleButtonClick = () => {
-    const posts = timeTravel(id);
+    const posts = timeTravel(interaction.id);
     console.log({ posts });
     setPosts(posts);
   };
 
   return (
     <li className="inline-flex bg-white w-full p-2 rounded-sm text-sm">
-      Moved post {post.title} from index {oldPosition + 1} to index{" "}
-      {newPosition + 1}
+      {generateText(interaction)}
       <button
         aria-label="Time travel"
         className="bg-secondary bold py-2 px-4 rounded-sm self-center cursor-pointer whitespace-nowrap text-center font-bold text-xs"

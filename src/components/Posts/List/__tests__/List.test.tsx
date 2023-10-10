@@ -26,12 +26,11 @@ const regExpTitle = new RegExp(POSTS[0].title, "i");
 describe("List", () => {
   it("should render the list of posts", async () => {
     const firstPost = screen.getByText(regExpTitle);
+    const lastPost = screen.getByText(
+      new RegExp(POSTS[POSTS.length - 1].title, "i")
+    );
 
     expect(firstPost).toBeVisible();
-  });
-
-  it("should render only 5 posts", () => {
-    const posts = screen.getAllByRole("listitem");
-    expect(posts.length).toBe(5);
+    expect(lastPost).toBeVisible();
   });
 });

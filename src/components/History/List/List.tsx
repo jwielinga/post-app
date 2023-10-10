@@ -6,7 +6,7 @@ export function List() {
   const { interactions } = useAppStore();
 
   return (
-    <ul className="p-4 rounded-md gap-1 overflow-y-scroll flex flex-col">
+    <ul className="px-4 my-4 rounded-md gap-1 overflow-y-scroll flex flex-col">
       {interactions.map((interaction) => (
         <Item key={interaction.id} interaction={interaction} />
       ))}
