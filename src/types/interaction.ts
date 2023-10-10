@@ -2,7 +2,7 @@ import { Post } from "./post";
 
 export type Interaction = {
   id: string;
-  post: Pick<Post, "id" | "title">;
+  postId: Post["id"];
   oldPosition: number;
   newPosition: number;
   postsSnapShot: Post[];

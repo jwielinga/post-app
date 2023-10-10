@@ -15,10 +15,7 @@ export function List() {
   const handleUp = (post: Post, index: number) => {
     const newPosition = index - 1;
     addPostInteraction({
-      post: {
-        id: post.id,
-        title: post.title,
-      },
+      postId: post.id,
       oldPosition: index,
       newPosition,
       postsSnapShot: posts,
@@ -29,10 +26,7 @@ export function List() {
   const handleDown = (post: Post, index: number) => {
     const newPosition = index + 1;
     addPostInteraction({
-      post: {
-        id: post.id,
-        title: post.title,
-      },
+      postId: post.id,
       oldPosition: index,
       newPosition,
       postsSnapShot: posts,
@@ -45,7 +39,7 @@ export function List() {
       {posts?.map((post, index) => (
         <Item
           key={post.id}
-          title={post.title}
+          id={post.id}
           {...(index !== 0 ? { onUp: () => handleUp(post, index) } : {})}
           {...(index !== posts.length - 1
             ? { onDown: () => handleDown(post, index) }
