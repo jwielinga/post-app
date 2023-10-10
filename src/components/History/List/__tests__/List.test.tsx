@@ -3,10 +3,10 @@
 import { render, screen, waitFor } from "@testing-library/react";
 
 import { INTERACTIONS, POSTS } from "@Post-app/mocks";
+import type { Interaction } from "@Post-app/types";
 
 import { List } from "../List";
 import { generateText } from "../../utils";
-import { Interaction } from "@Post-app/types";
 
 jest.mock("@Post-app/lib", () => ({
   useHistoryStore: () => ({
