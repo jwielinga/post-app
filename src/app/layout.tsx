@@ -1,11 +1,11 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Roboto } from "next/font/google";
 import { twMerge } from "tailwind-merge";
 
 import { Providers } from "./providers";
 
-const inter = Inter({ subsets: ["latin"] });
+const roboto = Roboto({ subsets: ["latin"], weight: "400" });
 
 export const metadata: Metadata = {
   title: "Post app",
@@ -17,7 +17,10 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const bodyClasses = twMerge(inter.className, "bg-neutral w-full h-full");
+  const bodyClasses = twMerge(
+    roboto.className,
+    "bg-neutral w-full h-full text-color-700"
+  );
   return (
     <html lang="en">
       <body className={bodyClasses}>
