@@ -6,9 +6,10 @@ import IconButton from "../IconButton";
 
 describe("IconButton", () => {
   it("should render the icon", () => {
+    const handleClick = jest.fn();
     render(
       <IconButton
-        onClick={() => {}}
+        onClick={handleClick}
         date-testid="text-icon"
         icon={<CheckCircleIcon />}
       />
