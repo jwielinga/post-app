@@ -5,10 +5,10 @@ import ArrowDownIcon from "@heroicons/react/24/solid/ArrowDownIcon";
 import { PostItemProps } from "./types";
 import IconButton from "../IconButton/IconButton";
 
-export default function PostItem({ title, onDown, onUp }: PostItemProps) {
+export default function PostItem({ id, onDown, onUp }: PostItemProps) {
   return (
     <li className="flex flex-row items-center justify-between h-20 p-2 my-2 bg-white rounded-md shadow-lg">
-      <p>{title}</p>
+      <p>Post {id}</p>
       <div className="flex flex-col">
         {onUp && (
           <IconButton

@@ -10,7 +10,7 @@ beforeEach(async () => {
 
 describe("List", () => {
   it("should render the list of posts", async () => {
-    const firstPost = await screen.getByText(new RegExp(POSTS[0].title));
+    const firstPost = await screen.getByText(new RegExp(`Post ${POSTS[0].id}`));
 
     await expect(firstPost).toBeVisible();
   });

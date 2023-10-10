@@ -1,5 +1,5 @@
 export type PostItemProps = {
-  title: string;
+  id: number;
   onUp?: () => void;
   onDown?: () => void;
 };
