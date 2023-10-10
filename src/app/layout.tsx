@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { twMerge } from "tailwind-merge";
 
-import { Providers } from "./providers";
+import { Providers } from "@Post-app/components";
 
 const inter = Inter({ subsets: ["latin"] });
 

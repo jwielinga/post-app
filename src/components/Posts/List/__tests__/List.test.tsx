@@ -3,12 +3,12 @@ import { render, screen } from "@testing-library/react";
 
 import { POSTS } from "@Post-app/mocks/posts";
 import { QueryWrapper } from "@Post-app/test";
+import type { Post } from "@Post-app/types";
 
 import { List } from "../List";
-import { Post } from "@Post-app/types";
 
-jest.mock("@Post-app/lib", () => ({
-  useAppStore: () => ({
+jest.mock("@Post-app/hooks", () => ({
+  usePostActionContext: () => ({
     posts: POSTS,
     setPosts: jest.fn(),
   }),

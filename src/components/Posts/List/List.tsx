@@ -2,19 +2,18 @@
 
 import React from "react";
 import { Post } from "@Post-app/types";
-import { useAppStore } from "@Post-app/lib";
 
-import { usePostsQuery } from "@Post-app/hooks";
+import { usePostActionContext, usePostsQuery } from "@Post-app/hooks";
 
 import { Item } from "../Item";
 
 export function List() {
-  const { addPostInteraction, posts, movePost } = useAppStore();
+  const { posts, movePost, addAction } = usePostActionContext();
   usePostsQuery();
 
   const handleUp = (post: Post, index: number) => {
     const newPosition = index - 1;
-    addPostInteraction({
+    addAction({
       postId: post.id,
       oldPosition: index,
       newPosition,
@@ -25,7 +24,7 @@ export function List() {
 
   const handleDown = (post: Post, index: number) => {
     const newPosition = index + 1;
-    addPostInteraction({
+    addAction({
       postId: post.id,
       oldPosition: index,
       newPosition,

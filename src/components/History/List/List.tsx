@@ -1,13 +1,13 @@
 import React from "react";
-import { useAppStore } from "../../../lib/store";
+import { usePostActionContext } from "@Post-app/hooks";
 import { Item } from "../Item";
 
 export function List() {
-  const { interactions } = useAppStore();
+  const { actions } = usePostActionContext();
 
   return (
     <ul className="px-4 my-4 rounded-md gap-1 overflow-y-scroll flex flex-col">
-      {interactions.map((interaction) => (
+      {actions.map((interaction) => (
         <Item key={interaction.id} interaction={interaction} />
       ))}
     </ul>

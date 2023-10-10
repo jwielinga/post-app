@@ -1,16 +1,15 @@
 import React from "react";
 
-import { useAppStore } from "@Post-app/lib";
+import { usePostActionContext } from "@Post-app/hooks";
 
 import type { HistoryItemProps } from "./types";
 import { generateText } from "../utils";
 
 export function Item({ interaction }: HistoryItemProps) {
-  const { timeTravel, setPosts } = useAppStore();
+  const { timeTravel } = usePostActionContext();
 
   const handleButtonClick = () => {
-    const posts = timeTravel(interaction.id);
-    setPosts(posts);
+    timeTravel(interaction.id);
   };
 
   return (
