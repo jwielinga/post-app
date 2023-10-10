@@ -1,6 +1,7 @@
 import React from "react";
-import { IconButtonProps } from "./types";
 import { twMerge } from "tailwind-merge";
+
+import type { IconButtonProps } from "./types";
 
 export default function IconButton({
   icon,
@@ -13,8 +14,8 @@ export default function IconButton({
   );
 
   return (
-    <button className={classes} {...restProps}>
-      {React.cloneElement(icon, { className: "h-4 w-4 text-black" })}
+    <button className={classes} type="button" {...restProps}>
+      {React.cloneElement(icon, { className: "h-4 w-4 text-primary" })}
     </button>
   );
 }

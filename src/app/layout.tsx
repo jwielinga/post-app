@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { twMerge } from "tailwind-merge";
 
-import Providers from "./providers";
+import { Providers } from "./providers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +19,7 @@ export default function RootLayout({
 }) {
   const bodyClasses = twMerge(
     inter.className,
-    "bg-gradient-to-br from-primary from-20% to-neutral to-20%"
+    "bg-gradient-to-br from-primary from-[20rem] to-neutral to-[20rem]"
   );
   return (
     <html lang="en">
