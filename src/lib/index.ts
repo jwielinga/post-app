@@ -1,3 +1,5 @@
-import { useAppStore } from "./store";
+import { useHistoryStore } from "./stores/history";
+import { usePostStore } from "./stores/posts";
+import { useSnapShotStore } from "./stores/snapshot";
 
-export { useAppStore };
+export { useHistoryStore, usePostStore, useSnapShotStore };

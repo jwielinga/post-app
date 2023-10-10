@@ -2,47 +2,59 @@
 
 import React from "react";
 import { Post } from "@Post-app/types";
-import { useAppStore } from "@Post-app/lib";
+import { useHistoryStore, usePostStore, useSnapShotStore } from "@Post-app/lib";
 
 import { usePostsQuery } from "@Post-app/hooks";
 
 import { Item } from "../Item";
 
 export function List() {
-  const { addPostInteraction, posts, movePost } = useAppStore();
+  const { posts, movePost } = usePostStore();
+  const { addPostInteraction } = useHistoryStore();
+  const { addSnapshots } = useSnapShotStore();
   usePostsQuery();
 
-  const handleUp = (post: Post, index: number) => {
+  const handleUp = (
+    event: React.MouseEvent<HTMLButtonElement>,
+    post: Post,
+    index: number
+  ) => {
+    event.preventDefault();
     const newPosition = index - 1;
-    addPostInteraction({
+    const interactionId = addPostInteraction({
       postId: post.id,
       oldPosition: index,
       newPosition,
-      postsSnapShot: posts,
     });
+    addSnapshots(interactionId, posts);
     movePost(post, newPosition);
   };
 
-  const handleDown = (post: Post, index: number) => {
+  const handleDown = (
+    event: React.MouseEvent<HTMLButtonElement>,
+    post: Post,
+    index: number
+  ) => {
+    event.preventDefault();
     const newPosition = index + 1;
-    addPostInteraction({
+    const interactionId = addPostInteraction({
       postId: post.id,
       oldPosition: index,
       newPosition,
-      postsSnapShot: posts,
     });
+    addSnapshots(interactionId, posts);
     movePost(post, newPosition);
   };
 
   return (
     <ul className="overflow-y-scroll h-max pb-2">
-      {posts?.map((post, index) => (
+      {posts.map((post, index) => (
         <Item
           key={post.id}
           id={post.id}
-          {...(index !== 0 ? { onUp: () => handleUp(post, index) } : {})}
+          {...(index !== 0 ? { onUp: (e) => handleUp(e, post, index) } : {})}
           {...(index !== posts.length - 1
-            ? { onDown: () => handleDown(post, index) }
+            ? { onDown: (e) => handleDown(e, post, index) }
             : {})}
         />
       ))}

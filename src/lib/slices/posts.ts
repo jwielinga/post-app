@@ -1,5 +1,6 @@
-import type { Post } from "@Post-app/types";
 import { StateCreator } from "zustand";
+
+import type { Post } from "@Post-app/types";
 
 export type PostsSlice = {
   posts: Post[];

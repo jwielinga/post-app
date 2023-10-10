@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import type { Post } from "@Post-app/types";
-import { useAppStore } from "@Post-app/lib";
+import { usePostStore } from "@Post-app/lib";
 import { getPosts } from "@Post-app/queries";
 
 export function usePostsQuery() {
-  const { setPosts } = useAppStore();
+  const { setPosts } = usePostStore();
 
   const onQuerySuccess = (data: Post[]) => {
     const slicedPosts = data?.slice(0, 5) ?? [];
