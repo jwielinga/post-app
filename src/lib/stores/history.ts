@@ -47,10 +47,6 @@ export const useHistoryStore = create<HistoryStore>((set, get) => ({
         : currentInteractions.slice(foundIndex + 1);
 
     set((state) => {
-      // usePostStore.setState((state) => ({
-      //   ...postStore,
-      //   posts: useSnapShotStore().snapShots[slicedInteractions[0].id],
-      // }));
       return {
         ...state,
         interactions: slicedInteractions,
